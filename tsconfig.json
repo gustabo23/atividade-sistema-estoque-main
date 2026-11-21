@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    // Saída: JavaScript que o Node 22 entende sem transformações extras
+    "target": "es2022",
+    // Node16: emite CommonJS (package.json sem "type": "module") e resolve pacotes com "exports", como o dotenv/config. O sequelize-cli lê config e models em CommonJS
+    "module": "node16",
+    "moduleResolution": "node16",
+    "rootDir": "./src",
+    "outDir": "./build",
+    "sourceMap": true,
+
+    // Checagens de tipo no nível mais rígido
+    "strict": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Permite `import express from 'express'` em libs CommonJS
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "types": ["node"]
+  },
+  // Inclui os testes: o editor e o `tsc --noEmit` (que roda antes do `npm test`) checam tudo.
+  // O build usa o tsconfig.build.json, que deixa os testes fora da pasta build/.
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"]
+}

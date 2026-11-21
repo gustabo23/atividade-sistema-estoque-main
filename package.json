@@ -1,0 +1,48 @@
+{
+  "name": "atividade-sistema-estoque",
+  "version": "1.0.0",
+  "main": "build/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node build/server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src",
+    "db:up": "docker compose --env-file .env -f docker-compose.yml up -d --wait",
+    "db:down": "docker compose --env-file .env -f docker-compose.yml down",
+    "db:logs": "docker compose --env-file .env -f docker-compose.yml logs -f db",
+    "db:create": "npm run build && sequelize db:create",
+    "db:drop": "npm run build && sequelize db:drop",
+    "db:migrate": "npm run build && sequelize db:migrate",
+    "db:migrate:undo": "npm run build && sequelize db:migrate:undo",
+    "db:seed": "npm run build && sequelize db:seed:all",
+    "db:reset": "npm run build && sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
+    "db:migration:new": "sequelize migration:generate --migrations-path src/database/migrations --name"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6",
+    "sequelize": "^6.37.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.10",
+    "sequelize-cli": "^6.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.1"
+  }
+}
