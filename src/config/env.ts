@@ -1,6 +1,3 @@
-// Lê e valida as variáveis de ambiente em um único lugar.
-// Importe este arquivo só depois de 'dotenv/config' (veja server.ts).
-
 const parseList = (value = ''): string[] =>
   value
     .split(',')
